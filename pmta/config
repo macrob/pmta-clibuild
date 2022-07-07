@@ -1,0 +1,108 @@
+
+############################################################################
+### Section 1: GENERAL
+############################################################################
+
+total-max-smtp-in 1000                  # maximum number on simultanious connections
+total-max-smtp-out 5000                 # maximum number on simultanious connections
+
+include /etc/pmta/conf.d/mailer-main-vmtas.conf
+include /etc/pmta/conf.d/mailer-backoff-vmtas.conf
+
+##  SOURCES/USERS
+include /etc/pmta/conf.d/smtp-users.conf
+
+include /etc/pmta/conf.d/virtual-mta.conf
+include /etc/pmta/conf.d/mx-rollup-list.conf
+include /etc/pmta/conf.d/domains.conf
+
+
+############################################################################
+### Section 2: BASE SETTINGS FOR LOCALHOST
+############################################################################
+
+<source 127.0.0.1>
+    always-allow-relaying yes           # allow feeding from 127.0.0.1
+    process-x-virtual-mta yes           # allow selection of a virtual MTA
+    max-message-size 10000K
+    smtp-service yes                    # allow SMTP service
+    remove-received-headers true
+    add-received-header false           
+    hide-message-source true        
+    remove-header X-Priority        
+    #pattern-list notify  
+    add-message-id-header true             
+</source>
+
+############################################################################
+### Section 3: MAIN SETTINGS
+############################################################################
+
+smtp-listener 0/0:2082 
+dummy-smtp-port 25025                   # Dummy smtp port for blackholing
+http-mgmt-port 5555                     # PMTA console is listened via web on port 5555
+
+http-access 172.105.75.120 admin        # PRIVATE IP ADDRESS
+http-access 127.0.0.1 monitor           
+http-access ::1 monitor
+run-as-root no
+
+
+############################################################################################
+### Section 4: SOURCES Указываем с какого IP (источника, маилвиза) Будет приходить трафик. #
+############################################################################################
+
+#include /etc/pmta/conf.d/source.conf NOT USED NOW
+
+############################################################################
+### Section 5: BOUNCE SETTINGS                                         #####
+############################################################################
+# If multiple entries match, the first match is used.
+
+include /etc/pmta/conf.d/bounce-category-patterns.conf
+
+###########################################################################
+### DUMMY SMTP ############################################################
+###########################################################################
+
+<smtp-pattern-list dummysmtp>
+    reply // bounce-queue
+</smtp-pattern-list>
+
+############################################################################
+### Section 6: BACKOFF PATTERN #############################################
+############################################################################
+
+include /etc/pmta/conf.d/smtp-pattern-list-blocking-errors.conf
+
+############################################################################
+### Section 7: LOG AND SPOOL SETTINGS ######################################
+############################################################################
+
+log-file /var/log/pmta/log        # logrotate is used for rotation
+
+# All logs
+ <acct-file /var/log/pmta/acct.csv>
+     move-interval 5m
+     max-size 500M
+     delete-after 60d
+     record-fields d *,!dsnMta,!dlvEsmtpAvailable,header_Message-Id
+ #    record-fields b *,!orcpt,!dsnMta,!srcType,!dlvType,!dlvDestinationIp,!dlvEsmtpAvailable,!dlvSize,!jobId,!envId
+ </acct-file>
+ 
+############################################################################
+### SECTION 8: OTHER OPTIONS ###############################################
+############################################################################
+
+sync-msg-create false
+sync-msg-update false
+run-as-root no
+
+# 
+# spool directories
+#
+
+<spool /var/spool/pmta>
+    deliver-only no
+    delete-file-holders yes
+</spool>
