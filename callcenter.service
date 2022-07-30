@@ -7,7 +7,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=sol
+User=root
 LimitNOFILE=1000000
 Environment="CC_API=https://call.tera-center.com/api/pmta-notification"
 
