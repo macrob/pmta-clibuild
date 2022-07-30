@@ -8,7 +8,7 @@ Restart=always
 User=root
 Environment="CC_API=https://call.tera-center.com/api/pmta-notification"
 
-ExecStart=$HOME/pmta-clibuild/pmta-cli 'callcenter:daemon:start'
+ExecStart=/root/pmta-clibuild/pmta-cli 'callcenter:daemon:start'
 
 
 
