@@ -1,7 +1,6 @@
 [Unit]
 Description=Callcenter pmta log reader
 After=network.target syslog.target sys-tuner.service
-StartLimitIntervalSec=0
 
 [Service]
 Type=simple
