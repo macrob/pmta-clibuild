@@ -1,0 +1,19 @@
+[Unit]
+Description=Callcenter pmta log reader
+After=network.target syslog.target sys-tuner.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sol
+LimitNOFILE=1000000
+Environment="CC_API=https://call.tera-center.com/api/pmta-notification"
+
+ExecStart=$HOME/pmta-clibuild/pmta-cli 'callcenter:daemon:start'
+
+
+
+[Install]
+WantedBy=multi-user.target
