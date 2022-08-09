@@ -34,6 +34,7 @@ sed -i -r "s/trackdomain/${domain}/g" ${nginxPth}/sites-enabled/${domain}.conf;
 rm ${nginxPth}/sites-enabled/${domain}.conf-r;
 
 sed -i -r 's/(listen .*443)/\1; #/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g; s/(server \{)/\1\n    ssl off;/g' ${nginxPth}/sites-enabled/${domain}.conf;
+sudo nginx -t && sudo systemctl reload nginx;
 
 #sed -i -r 's/ssl_certificate/#ssl_certificate/g' ${nginxPth}/sites-enabled/${domain}.conf
 #sed -i -r 's/# include snippets\/self/ include snippets\/self/g' ${nginxPth}/sites-enabled/${domain}.conf
