@@ -2,8 +2,8 @@
 
 nginxPth=/etc/nginx;
 # nginxPth=/Users/mac/private/wwwmac/pmta-clibuild/test;
-#mkdir /var/www/_letsencrypt;
-#chown nginx /var/www/_letsencrypt
+mkdir /var/www/_letsencrypt;
+chown nginx /var/www/_letsencrypt
 
 mkdir ${nginxPth}/sites-available;
 mkdir ${nginxPth}/sites-enabled;
