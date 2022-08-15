@@ -11,7 +11,7 @@ pwd=`pwd`;
 
 ###### CONFGIG CONST
 #uncomment next 1 lines;
-dkimDir = /etc/dkim;
+dkimDir=/etc/dkim;
 #dkimDir=./tmp/dkim/;
 
 
