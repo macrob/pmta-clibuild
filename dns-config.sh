@@ -1,4 +1,5 @@
 #!/bin/bash
+yum install -y jq;
 
 domain=`jq -r .domain config.json`;
 primaryIp=`jq -r .ip[0] config.json`;
