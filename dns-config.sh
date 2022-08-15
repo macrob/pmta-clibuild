@@ -41,13 +41,14 @@ dkimRecord=`echo "v=DKIM1; k=rsa; p=${dkim}" | sed -r 's/.{60}/&" "/g'`;
 
 zoneFile="${zones}/${domain}.zone"
 
-echo "zone \"${domain}\" IN {" >> $tmpFile
-echo "  type master;" >> $tmpFile
-echo "  file \"${zoneFile}\";" >> $tmpFile
-echo "  allow-update { none; };" >> $tmpFile
-echo "};" >> $tmpFile
-echo " " >> $tmpFile
+cat > $tmpFile <<EOL
+zone "${domain}" IN {
+  type master;
+  file "${zoneFile}";
+  allow-update { none; };
+}
 
+EOL
 
 #uncomment next 2 lines;
 cat /tmp/vm >> /etc/named.conf
