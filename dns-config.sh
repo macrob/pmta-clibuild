@@ -6,7 +6,7 @@ primaryIp=`jq -r .ip[0] config.json`;
 ips=`jq -r .ip[] config.json`;
 
 echo $primaryIp;
-tmpFile=./tmp/vm;
+tmpFile=/tmp/vm;
 pwd=`pwd`;
 
 ###### CONFGIG CONST
