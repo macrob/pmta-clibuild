@@ -31,3 +31,6 @@ logging {
 };
 EOF
 
+
+ufw allow 53/tcp comment 'Open port DNS tcp port 53'
+ufw allow 53/udp comment 'Open port DNS udp port 53'

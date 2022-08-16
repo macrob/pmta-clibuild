@@ -46,7 +46,7 @@ zone "${domain}" IN {
   type master;
   file "${zoneFile}";
   allow-update { none; };
-}
+};
 
 EOL
 
