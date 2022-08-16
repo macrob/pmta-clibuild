@@ -30,7 +30,7 @@ dkimPubPth="${dkimDir}/dkim5.${domain}.pub";
 
 if [[ ! -f $dkimPubPth ]]
 then
-  echo "Generate dkim"
+  echo "Generate dkim in progress"
 
   openssl genrsa -out $dkimKeyPth 2048
   openssl rsa -in $dkimKeyPth -pubout > $dkimPubPth;
