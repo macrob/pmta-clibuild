@@ -12,3 +12,5 @@ echo "domain-key dkim5,$domain,${dkimKeyPth}" >> /etc/pmta/dkimlist.txt
 
 cp -f ~/pmta-clibuild/build/config /etc/pmta/
 cp -f -r ~/pmta-clibuild/build/conf.d /etc/pmta/
+
+service pmta restart
