@@ -71,6 +71,7 @@ smtp.${domain}.   IN    A    ${primaryIp}
 pop.${domain}.    IN    A    ${primaryIp}
 imap.${domain}.   IN    A    ${primaryIp}
 mail.${domain}.   IN    A    ${primaryIp}
+track.${domain}.   IN    A    ${primaryIp}
 ${domain}.        IN    TXT    "v=spf1 ${spfip} a mx ~all"
 dkim5._domainkey.${domain}.   IN    TXT    "$dkimRecord"
 _adsp._domainkey.${domain}.   IN    TXT    "dkim=all"
