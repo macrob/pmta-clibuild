@@ -1,7 +1,10 @@
 #!/bin/bash
-
+mainDomain=`jq -r .domain config.json`;
+domain="track.${mainDomain}";
 nginxPth=/etc/nginx;
 # nginxPth=/Users/mac/private/wwwmac/pmta-clibuild/test;
+
+echo "Cоздаем /var/www/_letsencrypt";
 mkdir -p /var/www/_letsencrypt;
 chown nginx /var/www/_letsencrypt
 
@@ -14,19 +17,20 @@ cp nginx/nginx.conf ${nginxPth}/;
 
 
 
-while getopts d: flag
-do
-    case "${flag}" in
-        d) domain=${OPTARG};;
-    esac
-done
+#while getopts d: flag
+#do
+#    case "${flag}" in
+#        d) domain=${OPTARG};;
+#    esac
+#done
 
-if test -z "$domain" 
-then
-      echo " -d is empty: example '-d mydomain'"
-      exit;
-fi
+#if test -z "$domain" 
+#then
+#      echo " -d is empty: example '-d mydomain'"
+#      exit;
+#fi
 
+echo "Cоздаем nginx config ${nginxPth}/sites-enabled/${domain}.conf";
 cp nginx/sites-enabled/trackdomain.conf ${nginxPth}/sites-enabled/${domain}.conf;
 
 
