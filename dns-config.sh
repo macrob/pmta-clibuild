@@ -35,8 +35,8 @@ openssl genrsa -out $dkimKeyPth 2048
 openssl rsa -in $dkimKeyPth -pubout > $dkimPubPth;
 chmod 0444 $dkimKeyPth;
 dkim=`cat $dkimPubPth | sed '/^-/d' | awk '{printf "%s", $1}'`
-#dkimRecord=`echo "v=DKIM1; k=rsa; p=${dkim}" | sed -r 's/.{60}/&" "/g'`;
-dkimRecord=`echo "v=DKIM1; k=rsa; p=${dkim}"`;
+dkimRecord=`echo "v=DKIM1; k=rsa; p=${dkim}" | sed -r 's/.{60}/&" "/g'`;
+#dkimRecord=`echo "v=DKIM1; k=rsa; p=${dkim}"`;
 
 zoneFile="${zones}/${domain}.zone"
 
@@ -103,4 +103,3 @@ done
 
 echo "Bind DNS install successful"
 
-systemctl enable named && systemctl restart named
