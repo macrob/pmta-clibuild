@@ -103,3 +103,4 @@ done
 
 echo "Bind DNS install successful"
 
+systemctl enable named && systemctl restart named
