@@ -1,5 +1,5 @@
 #!/bin/bash
-
+yum install fish htop rsync perl git unzip net-tools ufw vim -y
 
 mkdir ~/.ssh
 echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDb9Zf1NQaWgaVXXls1WI5MRsubYi2WB2VjFzlAfEO38a+NFEbwqkOGwayUtsncIamn7jB5Hni8D72DuOFqWPYcdbiEapryvtNq0HesjLkqkby/8k+2NRiEf29Z/ujFnMtRS+cXDdpcSkcMcWLcHWMUkH1AzRYYxnSPLUMq4j4pHQ3jpJPNTSKqAsFRamEyMmaY9U+Ft5qfKNO7Fe7fJyZvPmdJ/2SlV9Zjd9C9rS80IwNeZ9B8m5R4roMnx3h9BOHYtX47zco0gu0mlRVMSYzLD5uDSfz/F5Tb7qJdqvwjCAZZdcLlwd5lg/6QrE+kM9O/Jr0UDbwldc9paA2OGNA7 rsa 2048' >> ~/.ssh/authorized_keys
