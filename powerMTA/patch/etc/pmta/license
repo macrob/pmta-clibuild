@@ -1,0 +1,14 @@
+product: PowerMTA
+version: 5.0
+platform: linux-intel
+units: 4294967295
+options: H,enterprise-plus,no-passive-audit
+mac:
+licensee: BlackDevil
+serial: SKYPE: BlackDevil
+comment: PMTA v5.0
+issued: 2019-09-21
+expires: never
+copyright: Port25 Solutions, Inc.  All Rights Reserved
+check: 1-AZzveAgi1HmPcuBD18Iq1ol33jor2IrI2zt95mcDHAQf7wAkQ+XiBJab6eucTUIg
+RwsatRyb3xCYu0hs+wCz7w==
